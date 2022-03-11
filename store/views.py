@@ -1,11 +1,20 @@
 from django.shortcuts import render
+from .models import *
 
 # Create your views here.
 
 
+def categories(request):
+    return {
+        'categories': Category.objects.all()
+    }
+
+
 
 def HomePage(request):
-    return render(request, 'frontend/index.html')
+    products = Product.objects.all()
+    context = {'products':products}
+    return render(request, 'frontend/index.html', context)
 
 
 

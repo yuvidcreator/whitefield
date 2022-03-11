@@ -20,7 +20,7 @@
                             <option value="eur" selected>₹ INR (Rupees)</option>
                             <option value="usd">$ USD (Dollar)</option>
                             <option value="eur">€ EUR (Euro)</option>
-                            <option value="usd">£ GBP (Pound)</option>
+                            <option value="usd">₹ GBP (Pound)</option>
                             <option value="usd">¥ JPY (Yen)</option>
                         </select>
                     </li>
@@ -51,9 +51,10 @@
                                 <a href="#" class="menu-name" data-title="Shop">Shop</a>
                                 <div class="wrap-megamenu lg-width-900 md-width-750">
                                     <div class="mega-content">
+                                        {% for c in categories %}
                                         <div class="col-lg-3 col-md-3 col-xs-12 md-margin-bottom-0 xs-margin-bottom-25">
                                             <div class="wrap-custom-menu vertical-menu">
-                                                <h4 class="menu-title">Dairy Products</h4>
+                                                <h4 class="menu-title">{{ c.name|title }}</h4>
                                                 <ul class="menu">
                                                     <li><a href="#">Paneer</a></li>
                                                     <li><a href="#">Ghee</a></li>
@@ -63,6 +64,8 @@
                                                 </ul>
                                             </div>
                                         </div>
+                                        {% endfor %}
+                                        {% comment %}
                                         <div class="col-lg-3 col-md-3 col-xs-12 md-margin-bottom-0 xs-margin-bottom-25">
                                             <div class="wrap-custom-menu vertical-menu">
                                                 <h4 class="menu-title">Sweets</h4>
@@ -99,13 +102,18 @@
                                                 </ul>
                                             </div>
                                         </div>
+                                        {% endcomment %}
                                     </div>
                                 </div>
                             </li>
                             <li class="menu-item menu-item-has-children has-child">
-                                <a href="#" class="menu-name" data-title="Products">Products</a>
+                                <a href="#" class="menu-name" data-title="Products">Categories</a>
                                 <ul class="sub-menu">
-                                    <li class="menu-item"><a href="#">Omelettes</a></li>
+                                    {% for c in categories %}
+                                    <li class="menu-item"><a href="#">{{ c.name|title }}</a></li>
+                                    {% endfor %}
+
+                                    {% comment %}
                                     <li class="menu-item"><a href="#">Breakfast Scrambles</a></li>
                                     <li class="menu-item menu-item-has-children has-child"><a href="#" class="menu-name" data-title="Eggs & other considerations">Eggs & other considerations</a>
                                         <ul class="sub-menu">
@@ -131,14 +139,16 @@
                                     </li>
                                     <li class="menu-item"><a href="#">Biscuits</a></li>
                                     <li class="menu-item"><a href="#">Seasonal Fruit Plate</a></li>
+                                    {% endcomment %}
                                 </ul>
                             </li>
-                            <!-- <li class="menu-item"><a href="{% url 'Product-Page' %}">Product</a></li> -->
+                            {% comment %}<li class="menu-item"><a href="{% url 'Product-Page' %}">Product</a></li> {% endcomment %}
                             <li class="menu-item"><a href="{% url 'About-Page' %}">About</a></li>
                             <li class="menu-item"><a href="{% url 'Contact-Page' %}">Contact</a></li>
-                            <!-- <li class="menu-item"><a href="{% url 'Login-Page' %}">Login</a></li> -->
+                            {% comment %} <li class="menu-item"><a href="{% url 'Login-Page' %}">Login</a></li> {% endcomment %}
                             
-                            <!-- <li class="menu-item menu-item-has-children has-megamenu">
+                            {% comment %}
+                            <li class="menu-item menu-item-has-children has-megamenu">
                                 <a href="#" class="menu-name" data-title="Demo">Demo</a>
                                 <div class="wrap-megamenu lg-width-800 md-width-750">
                                     <div class="mega-content">
@@ -188,8 +198,10 @@
                                         </div>
                                     </div>
                                 </div>
-                            </li> -->
-                            <!-- <li class="menu-item menu-item-has-children has-megamenu">
+                            </li>
+                            {% endcomment %}
+                            {% comment %} 
+                            <li class="menu-item menu-item-has-children has-megamenu">
                                 <a href="#" class="menu-name" data-title="Blog">Blog</a>
                                 <div class="wrap-megamenu lg-width-800 md-width-750">
                                     <div class="mega-content">
@@ -266,8 +278,9 @@
                                         </div>
                                     </div>
                                 </div>
-                            </li> -->
-                            <!-- <li class="menu-item"><a href="contact.html">Contact</a></li> -->
+                            </li>
+                            <li class="menu-item"><a href="contact.html">Contact</a></li> 
+                            {% endcomment %}
                         </ul>
                     </div>
                 </div>
@@ -325,8 +338,8 @@
                                                     <div class="left-info">
                                                         <div class="product-title"><a href="#" class="product-name">National Fresh Fruit</a></div>
                                                         <div class="price">
-                                                            <ins><span class="price-amount"><span class="currencySymbol">£</span>85.00</span></ins>
-                                                            <del><span class="price-amount"><span class="currencySymbol">£</span>95.00</span></del>
+                                                            <ins><span class="price-amount"><span class="currencySymbol">₹</span>85.00</span></ins>
+                                                            <del><span class="price-amount"><span class="currencySymbol">₹</span>95.00</span></del>
                                                         </div>
                                                         <div class="qty">
                                                             <label for="cart[id123][qty]">Qty:</label>
@@ -347,8 +360,8 @@
                                                     <div class="left-info">
                                                         <div class="product-title"><a href="#" class="product-name">National Fresh Fruit</a></div>
                                                         <div class="price">
-                                                            <ins><span class="price-amount"><span class="currencySymbol">£</span>85.00</span></ins>
-                                                            <del><span class="price-amount"><span class="currencySymbol">£</span>95.00</span></del>
+                                                            <ins><span class="price-amount"><span class="currencySymbol">₹</span>85.00</span></ins>
+                                                            <del><span class="price-amount"><span class="currencySymbol">₹</span>95.00</span></del>
                                                         </div>
                                                         <div class="qty">
                                                             <label for="cart[id124][qty]">Qty:</label>
@@ -369,8 +382,8 @@
                                                     <div class="left-info">
                                                         <div class="product-title"><a href="#" class="product-name">National Fresh Fruit</a></div>
                                                         <div class="price">
-                                                            <ins><span class="price-amount"><span class="currencySymbol">£</span>85.00</span></ins>
-                                                            <del><span class="price-amount"><span class="currencySymbol">£</span>95.00</span></del>
+                                                            <ins><span class="price-amount"><span class="currencySymbol">₹</span>85.00</span></ins>
+                                                            <del><span class="price-amount"><span class="currencySymbol">₹</span>95.00</span></del>
                                                         </div>
                                                         <div class="qty">
                                                             <label for="cart[id125][qty]">Qty:</label>
@@ -391,8 +404,8 @@
                                                     <div class="left-info">
                                                         <div class="product-title"><a href="#" class="product-name">National Fresh Fruit</a></div>
                                                         <div class="price">
-                                                            <ins><span class="price-amount"><span class="currencySymbol">£</span>85.00</span></ins>
-                                                            <del><span class="price-amount"><span class="currencySymbol">£</span>95.00</span></del>
+                                                            <ins><span class="price-amount"><span class="currencySymbol">₹</span>85.00</span></ins>
+                                                            <del><span class="price-amount"><span class="currencySymbol">₹</span>95.00</span></del>
                                                         </div>
                                                         <div class="qty">
                                                             <label for="cart[id126][qty]">Qty:</label>
@@ -413,8 +426,8 @@
                                                     <div class="left-info">
                                                         <div class="product-title"><a href="#" class="product-name">National Fresh Fruit</a></div>
                                                         <div class="price">
-                                                            <ins><span class="price-amount"><span class="currencySymbol">£</span>85.00</span></ins>
-                                                            <del><span class="price-amount"><span class="currencySymbol">£</span>95.00</span></del>
+                                                            <ins><span class="price-amount"><span class="currencySymbol">₹</span>85.00</span></ins>
+                                                            <del><span class="price-amount"><span class="currencySymbol">₹</span>95.00</span></del>
                                                         </div>
                                                         <div class="qty">
                                                             <label for="cart[id127][qty]">Qty:</label>
@@ -516,8 +529,8 @@
                                                                         <b class="categories">Fresh Fruit</b>
                                                                         <h4 class="product-title"><a href="#" class="pr-name">National Fresh Fruit</a></h4>
                                                                         <div class="price">
-                                                                            <ins><span class="price-amount"><span class="currencySymbol">£</span>85.00</span></ins>
-                                                                            <del><span class="price-amount"><span class="currencySymbol">£</span>95.00</span></del>
+                                                                            <ins><span class="price-amount"><span class="currencySymbol">₹</span>85.00</span></ins>
+                                                                            <del><span class="price-amount"><span class="currencySymbol">₹</span>95.00</span></del>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -533,8 +546,8 @@
                                                                         <b class="categories">Fresh Fruit</b>
                                                                         <h4 class="product-title"><a href="#" class="pr-name">National Fresh Fruit</a></h4>
                                                                         <div class="price">
-                                                                            <ins><span class="price-amount"><span class="currencySymbol">£</span>85.00</span></ins>
-                                                                            <del><span class="price-amount"><span class="currencySymbol">£</span>95.00</span></del>
+                                                                            <ins><span class="price-amount"><span class="currencySymbol">₹</span>85.00</span></ins>
+                                                                            <del><span class="price-amount"><span class="currencySymbol">₹</span>95.00</span></del>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -550,8 +563,8 @@
                                                                         <b class="categories">Fresh Fruit</b>
                                                                         <h4 class="product-title"><a href="#" class="pr-name">National Fresh Fruit</a></h4>
                                                                         <div class="price">
-                                                                            <ins><span class="price-amount"><span class="currencySymbol">£</span>85.00</span></ins>
-                                                                            <del><span class="price-amount"><span class="currencySymbol">£</span>95.00</span></del>
+                                                                            <ins><span class="price-amount"><span class="currencySymbol">₹</span>85.00</span></ins>
+                                                                            <del><span class="price-amount"><span class="currencySymbol">₹</span>95.00</span></del>
                                                                         </div>
                                                                     </div>
                                                                 </div>
